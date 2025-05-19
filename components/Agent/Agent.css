@@ -1,0 +1,113 @@
+.interview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+  width: 20rem;
+}
+@media (min-width: 640px) {
+  .interview-card {
+    height: 20rem;
+    width: 30rem;
+  }
+}
+
+.user {
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #121212, #000000);
+}
+
+.ai {
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #0e081e, #000000);
+}
+
+.call {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 2px 26px 2px 26px;
+  background-color: lime;
+  border-radius: 20px;
+  color: white;
+  transition: 0.2s ease;
+}
+.end {
+  font-size: 16px;
+  padding: 2px 26px 2px 26px;
+  border-radius: 20px;
+  background-color: red;
+  color: rgb(255, 255, 255);
+  transition: 0.2s ease;
+}
+
+.call:hover {
+  background-color: rgb(49, 181, 49);
+  color: white;
+}
+.end:hover {
+  background-color: rgb(179, 8, 8);
+  color: white;
+}
+
+.interview-txt-div {
+  padding: 1px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #252627df, #100f0f);
+}
+.interview-txt {
+  background: linear-gradient(to bottom, #121212, #000000);
+  border-radius: 20px;
+}
+
+/* -------------------------------------------------- */
+
+.wave-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.center-dot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #346ac0;
+  border-radius: 50%;
+  animation: ripple 1.8s ease-out infinite;
+  z-index: 1;
+}
+
+.ripple.delay-1 {
+  animation-delay: 0.4s;
+}
+.ripple.delay-2 {
+  animation-delay: 0.8s;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

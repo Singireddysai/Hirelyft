@@ -1,0 +1,19 @@
+.interview-card {
+  /* padding: 4px; */
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #111111, #000000);
+}
+
+.interview-type {
+  padding: 6px 12px 6px 12px;
+  background-color: #031d3d;
+  border-radius: 20px;
+  color: var(--col3);
+  font-weight: 500;
+}
+
+.card {
+  padding: 2px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #252627df, #000000);
+}
