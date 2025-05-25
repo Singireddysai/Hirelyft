@@ -11,9 +11,8 @@ export async function POST(request: Request) {
   try {
     let body = await request.json();
 
-    if (typeof body.arguments === "string") {
-      body = JSON.parse(body.arguments);
-    }
+    body = JSON.parse(body.message.toolCallList[0].function.arguments);
+    
 
     const { type, role, level, techstack, amount, userid } = body;
 
