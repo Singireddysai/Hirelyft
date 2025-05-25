@@ -1,5 +1,6 @@
-// import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
-// import { z } from "zod";
+import { CreateAssistantDTO } from "@vapi-ai/web/dist/api";
+
+import { z } from "zod";
 
 export const mappings = {
   "react.js": "react",
@@ -146,7 +147,6 @@ export const mappings = {
 // Inform them that the company will reach out soon with feedback.
 // End the conversation on a polite and positive note.
 
-
 // - Be sure to be professional and polite.
 // - Keep all your responses short and simple. Use official language, but be kind and welcoming.
 // - This is a voice conversation, so keep your responses short, like in a real conversation. Don't ramble for too long.`,
@@ -234,8 +234,213 @@ export const dummyInterviews: Interview[] = [
     type: "Technical",
     techstack: ["Tailwind", "vercel", "React", "NumPy"],
     level: "Mid",
-    questions: ["Explain the difference between supervised and unsupervised learning."],
+    questions: [
+      "Explain the difference between supervised and unsupervised learning.",
+    ],
     finalized: true,
-    createdAt: "2024-05-10T09:45:00Z"
-  }
+    createdAt: "2024-05-10T09:45:00Z",
+  },
 ];
+
+export const generator = {
+  name: "test",
+  nodes: [
+    {
+      name: "start",
+      type: "conversation",
+      isStart: true,
+      metadata: {
+        position: {
+          x: -188.82552787692674,
+          y: 124.33161394637187,
+        },
+      },
+      prompt:
+        "You will initiate the conversation by saying \"Hello, {{username}}! Let's prepare your interview. I'll ask you a few questions and prepare an interview jus for you. Are you ready?\" and then you have to ask user \n5 questions-What's the role user's applying for? what's the type of interview?(technical or behavioral or mixed). The level of job experience (senior or junior). Techstack that he's proficient with. Amount of questions that are supposed to be asked.",
+      voice: {
+        model: "aura-2",
+        voiceId: "thalia",
+        provider: "deepgram",
+      },
+      variableExtractionPlan: {
+        output: [],
+      },
+    },
+    {
+      name: "conversation_1",
+      type: "conversation",
+      metadata: {
+        position: {
+          x: 285.58209819913907,
+          y: 199.39358460375342,
+        },
+      },
+      prompt: "Extract the variables specified without missing anything.",
+      voice: {
+        model: "aura-2",
+        voiceId: "thalia",
+        provider: "deepgram",
+      },
+      variableExtractionPlan: {
+        output: [
+          {
+            enum: [],
+            type: "string",
+            title: "role",
+            description: "What role would you like to train for?",
+          },
+          {
+            enum: [],
+            type: "string",
+            title: "type",
+            description:
+              "Are you aiming for a technical, behavioral or a mixed type of interview?",
+          },
+          {
+            enum: [],
+            type: "string",
+            title: "level",
+            description: "The job experience level required",
+          },
+          {
+            enum: [],
+            type: "string",
+            title: "techstack",
+            description:
+              "A list of technologies to cover during the job interview",
+          },
+          {
+            enum: [],
+            type: "string",
+            title: "amount",
+            description:
+              "How many questions would you like me to prepare for you?",
+          },
+        ],
+      },
+    },
+    {
+      name: "node_1747665292980",
+      type: "apiRequest",
+      metadata: {
+        position: {
+          x: 322.2231267742686,
+          y: 442.9331747246701,
+        },
+      },
+      method: "POST",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/vapi/generate`,
+      headers: {
+        type: "object",
+        properties: {},
+      },
+      body: {
+        type: "object",
+        properties: {
+          role: {
+            type: "string",
+            value: "{{role}}",
+            description: "",
+          },
+          type: {
+            type: "string",
+            value: "{{type}}",
+            description: "",
+          },
+          level: {
+            type: "string",
+            value: "{{level}}",
+            description: "",
+          },
+          amount: {
+            type: "string",
+            value: "{{amount}}",
+            description: "",
+          },
+          userid: {
+            type: "string",
+            value: "{{userid}}",
+            description: "",
+          },
+          techstack: {
+            type: "string",
+            value: "{{techstack}}",
+            description: "",
+          },
+        },
+      },
+      output: {
+        type: "object",
+        properties: {},
+      },
+      mode: "blocking",
+      hooks: [],
+    },
+    {
+      name: "conversation_1747665482529",
+      type: "conversation",
+      metadata: {
+        position: {
+          x: -191.07202470563396,
+          y: 575.7876529966671,
+        },
+      },
+      prompt:
+        "Say that the interview has been generated and thank the user for the call. And end the call",
+      voice: {
+        model: "aura-2",
+        voiceId: "thalia",
+        provider: "deepgram",
+      },
+    },
+    {
+      name: "hangup_1747665504014",
+      type: "hangup",
+      metadata: {
+        position: {
+          x: -97.96788207338105,
+          y: 751.810096635722,
+        },
+      },
+    },
+  ],
+  edges: [
+    {
+      from: "start",
+      to: "conversation_1",
+      condition: {
+        type: "ai",
+        prompt: "",
+      },
+    },
+    {
+      from: "conversation_1",
+      to: "node_1747665292980",
+      condition: {
+        type: "ai",
+        prompt: "",
+      },
+    },
+    {
+      from: "node_1747665292980",
+      to: "conversation_1747665482529",
+      condition: {
+        type: "ai",
+        prompt: "",
+      },
+    },
+    {
+      from: "conversation_1747665482529",
+      to: "hangup_1747665504014",
+      condition: {
+        type: "ai",
+        prompt: "",
+      },
+    },
+  ],
+};
+
+
+
+
+

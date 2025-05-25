@@ -8,8 +8,15 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  const { type, role, level, techstack, amount, userid } = await request.json();
   try {
+    let body = await request.json();
+
+    if (typeof body.arguments === "string") {
+      body = JSON.parse(body.arguments);
+    }
+
+    const { type, role, level, techstack, amount, userid } = body;
+
     const { text: questions } = await generateText({
       model: google("gemini-2.0-flash-001"),
       prompt: `Prepare questions for a job interview.
@@ -22,7 +29,7 @@ export async function POST(request: Request) {
         The questions are going to be read by a voice assistant so do not use "/" or "*" or any other special characters which might break the voice assistant.
         Return the questions formatted like this:
         ["Question 1", "Question 2", "Question 3"]
-        
+
         Thank you! <3`,
     });
 
@@ -32,27 +39,16 @@ export async function POST(request: Request) {
       level,
       techstack: techstack.split(","),
       questions: JSON.parse(questions),
-      userId: userid,
+      userId: userid || "", 
       finalized: true,
       coverImage: getRandomInterviewCover(),
       createdAt: new Date().toISOString(),
     };
 
     await db.collection("interviews").add(interview);
-    return Response.json(
-      {
-        success: true,
-      },
-      { status: 200 }
-    );
+    return Response.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.log(error);
-    return Response.json(
-      {
-        success: false,
-        error,
-      },
-      { status: 500 }
-    );
+    console.error("POST error:", error);
+    return Response.json({ success: false, error }, { status: 500 });
   }
 }
