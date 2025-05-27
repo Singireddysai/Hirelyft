@@ -14,20 +14,26 @@
   }
 }
 
+.bg-card {
+  padding: 3px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #444242, #0d0d0df4);
+}
+
 .user {
   border-radius: 20px;
-  background: linear-gradient(to bottom, #121212, #000000);
+  background: linear-gradient(to bottom, #1b1a1a, #050505);
 }
 
 .ai {
   border-radius: 20px;
-  background: linear-gradient(to bottom, #0e081e, #000000);
+  background: linear-gradient(to bottom, #170e32, #050505);
 }
 
 .call {
   font-size: 16px;
   font-weight: bold;
-  padding: 2px 26px 2px 26px;
+  padding: 4px 44px 4px 44px;
   background-color: lime;
   border-radius: 20px;
   color: white;
@@ -36,7 +42,7 @@
 
 .end {
   font-size: 16px;
-  padding: 2px 26px 2px 26px;
+  padding: 4px 44px 4px 44px;
   border-radius: 20px;
   background-color: red;
   color: rgb(255, 255, 255);

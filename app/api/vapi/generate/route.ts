@@ -13,7 +13,7 @@ interface InterviewArgs {
   level: string;
   amount: string;
   techstack: string;
-  userid?: string; // Optional, since not in payload
+  userid?: string; 
 }
 
 const extractArguments = (body: any): InterviewArgs => {
@@ -23,7 +23,7 @@ const extractArguments = (body: any): InterviewArgs => {
 
   const args = body.message.toolCallList[0].function.arguments;
 
-  // Validate required fields
+
   if (!args.role || !args.type || !args.level || !args.amount || !args.techstack) {
     throw new Error("Missing required fields in arguments");
   }
@@ -34,7 +34,7 @@ const extractArguments = (body: any): InterviewArgs => {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const args = extractArguments(body); // Extract arguments without overwriting body
+    const args = extractArguments(body);
     const { role, type, level, amount, techstack, userid } = args;
 
     // Rest of your code...
@@ -70,9 +70,9 @@ export async function POST(request: Request) {
       role,
       type,
       level,
-      techstack: techstack.split(",").map(t => t.trim()),
+      techstack: techstack.split("/,|\band\b/").map(t => t.trim()),
       questions: parsedQuestions,
-      userId: userid || "", // Handle missing userid
+      userId: userid || "", 
       finalized: true,
       coverImage: getRandomInterviewCover(),
       createdAt: new Date().toISOString(),

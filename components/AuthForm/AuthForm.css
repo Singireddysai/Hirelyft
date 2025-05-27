@@ -19,12 +19,11 @@
 .btn {
   cursor: pointer;
   border-radius: 9999px;
-  border-bottom: 1px solid rgb(173, 164, 164);
   font-weight: 700;
   transition: 0.3s ease;
-  background-color: var(--col3);
-  color: var(--col2);
+  background-color: var(--col1);
+  color: white;
 }
 .btn:hover {
-  background-color: #5684a7;
+  background-color: #7751a6;
 }

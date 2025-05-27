@@ -3,40 +3,42 @@ import dayjs from "dayjs";
 import "./InterviewCard.css";
 import Image from "next/image";
 import Link from "next/link";
-import { getRandomInterviewCover } from "@/lib/utils";
+import { getInterviewCover, getRandomInterviewCover } from "@/lib/utils";
 import { Button } from "../ui/button";
 import DisplayTechIcons from "../DisplayTechIcons/DisplayTechIcons";
+import { getFeedbackById } from "@/lib/actions/general.action";
 
-const InterviewCard = ({
-  interviewId,
+const InterviewCard = async ({
+  id,
   userId,
   role,
   type,
   techstack,
   createdAt,
 }: InterviewCardProps) => {
-  const feedback = null as Feedback | null;
+  const feedback =
+    userId && id ? await getFeedbackById({ interviewId: id, userId }) : null;
   const normalizedType = /mix/gi.test(type) ? "Mixed" : type;
   const formattedDate = dayjs(
     feedback?.createdAt || createdAt || Date.now()
   ).format("MMM D ,YYYY");
 
   return (
-    <div className="card">
-      <div className=" interview-card w-[360px] h-[380px] max-sm:w-full">
-        <div className="relative p-2 flex flex-col gap-2">
-          <div className="absolute top-1 right-1 interview-type">
-            <p>{normalizedType}</p>
+    <div className="p-0.5 rounded-[20px] bg-gradient-to-b from-[#444242] to-[#1b1a1a]">
+      <div className=" rounded-[20px] bg-gradient-to-b from-[#1b1a1a] to-black w-[360px] h-[380px] max-sm:w-full">
+        <div className="relative p-3 flex flex-col gap-2">
+          <div className="absolute top-1 right-1 px-3 py-1.5 bg-gray-900 rounded-full text-purple-400 font-medium">
+            <p className="font-bold">{normalizedType}</p>
           </div>
           <Image
             className="rounded-full"
-            src={getRandomInterviewCover()}
+            src={getInterviewCover(role)}
             alt="cover-image"
-            width={70}
-            height={70}
+            width={90}
+            height={90}
           />
           <h3 className="text-xl font-bold mt-6">{role} Interview</h3>
-          <div className="flex gap-1 text-[var(--col4)]">
+          <div className="flex gap-1 text-white">
             <Image
               src={"/calendar.svg"}
               alt="calender-logo"
@@ -63,16 +65,14 @@ const InterviewCard = ({
             <DisplayTechIcons techStack={techstack} />
             <Button
               asChild
-              className="px-3 py-1 border-2 border-[var(--col3)] text-[var(--col3)] font-bold rounded-full transition duration-300 ease-in-out hover:bg-[var(--col3)] hover:text-white"
+              className="px-3 py-1 border-2 border-purple-400 text-purple-400 font-bold rounded-full transition duration-300 ease-in-out hover:bg-purple-400 hover:text-white"
             >
               <Link
                 href={
-                  feedback
-                    ? `/interview/${interviewId}/feedback`
-                    : `/interview/${interviewId}`
+                  feedback ? `/interview/${id}/feedback` : `/interview/${id}`
                 }
               >
-                {feedback ? "View feedback" : "View interview"}
+                {feedback ? "Check Feedback" : "View interview"}
               </Link>
             </Button>
           </div>

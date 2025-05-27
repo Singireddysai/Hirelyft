@@ -45,3 +45,33 @@ export const getRandomInterviewCover = () => {
   const randomIndex = Math.floor(Math.random() * interviewCovers.length);
   return `/covers${interviewCovers[randomIndex]}`;
 };
+
+export const getInterviewCover = (interviewRole: string): string => {
+  const availableCovers = [
+    "ai",
+    "back-end",
+    "cloud-developer",
+    "data-science",
+    "front-end",
+    "full-stack",
+    "machine-learning",
+    "mobile-developer",
+    "web-designing",
+    "general",
+  ];
+
+  const normalize = (str: string) =>
+    str.toLowerCase().replace(/[^a-z0-9]/g, "");
+
+  const normalizedRole = normalize(interviewRole);
+
+  const coverMap: Record<string, string> = {};
+  availableCovers.forEach((cover) => {
+    coverMap[normalize(cover)] = cover;
+  });
+
+  const matchedCover = coverMap[normalizedRole] || "general";
+
+  return `/interview-covers/${matchedCover}.jpg`;
+};
+

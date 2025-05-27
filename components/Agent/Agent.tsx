@@ -7,7 +7,10 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { vapi } from "@/lib/vapi.sdk";
-import { generator } from "@/constants";
+import { interviewer } from "@/constants";
+import Lottie from "lottie-react";
+import animationData from "../../public/connecting-animation.json";
+import { createFeedback } from "@/lib/actions/general.action";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -21,7 +24,13 @@ interface SavedMessage {
   content: string;
 }
 
-const Agent = ({ userName, userId, type }: AgentProps) => {
+const Agent = ({
+  userName,
+  userId,
+  type,
+  interviewId,
+  questions,
+}: AgentProps) => {
   const router = useRouter();
   const [isSpeaking, setisSpeaking] = useState(false);
   const [callStatus, setcallStatus] = useState<CallStatus>(CallStatus.INACTIVE);
@@ -61,14 +70,61 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
       vapi.off("error", onError);
     };
   }, []);
+
+  const handleGenerateFeedback = async (messages: SavedMessage[]) => {
+    console.log("Generate feedback here.");
+
+    const { success, feedbackId: id } = await createFeedback({
+      interviewId: interviewId!,
+      userId: userId!,
+      transcript: messages,
+    });
+    if (success && id) {
+      router.push(`/interview/${interviewId}/feedback`);
+    } else {
+      console.log("Error saving feedback");
+      router.push("/");
+    }
+  };
   useEffect(() => {
-    if (callStatus === CallStatus.FINISHED) router.push("/");
+    if (callStatus === CallStatus.FINISHED) {
+      if (type === "generate") {
+        router.push("/");
+      } else {
+        handleGenerateFeedback(messages);
+      }
+    }
   }, [messages, callStatus, type, userId]);
 
   const handleCall = async () => {
     setcallStatus(CallStatus.CONNECTING);
     try {
-      await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!);
+      if (type === "generate") {
+        await vapi.start(process.env.NEXT_PUBLIC_VAPI_WORKFLOW_ID!, {
+          variableValues: {
+            username: userName,
+            userid: userId,
+          },
+          //@ts-expect-error
+          clientMessages: ["transcript"],
+          serverMessages: [],
+        });
+      } else {
+        let formattedQuestions = "";
+        if (questions) {
+          formattedQuestions = questions
+            .map((question) => `-${question}`)
+            .join("\n");
+        }
+        await vapi.start(interviewer, {
+          variableValues: {
+            questions: formattedQuestions,
+          },
+          //@ts-expect-error
+          clientMessages: ["transcript"],
+          serverMessages: [],
+        });
+      }
     } catch (error) {
       console.error("vapi.start error:", error);
       setcallStatus(CallStatus.INACTIVE);
@@ -83,9 +139,9 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
     callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
   return (
     <>
-      <div className="interview-pane justify-center items-center pt-8 flex gap-6">
-        <div className="auth-card">
-          <div className="ai interview-card ">
+      <div className="interview-pane justify-center items-center pt-18 flex gap-6">
+        <div className="bg-card !p-[0px]">
+          <div className="ai interview-card border-3 border-solid border-slate-500">
             <div className="wave-container">
               {isSpeaking && (
                 <>
@@ -104,7 +160,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
             </p>
           </div>
         </div>
-        <div className="auth-card hidden md:block">
+        <div className="bg-card hidden md:block">
           <div className="user interview-card">
             <Image
               className="rounded-full"
@@ -136,7 +192,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
         </div>
       )}
 
-      <div className="w-full mt-[2rem] flex justify-center">
+      <div className="w-full mt-[4rem] flex justify-center">
         {callStatus !== "ACTIVE" ? (
           <button className="call" onClick={handleCall}>
             <span
@@ -154,7 +210,12 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
                   width={32}
                 />
               ) : (
-                "..."
+                <Lottie
+                  autoplay
+                  loop
+                  animationData={animationData}
+                  style={{ height: "34px", width: "64px" }}
+                />
               )}
             </span>
           </button>
