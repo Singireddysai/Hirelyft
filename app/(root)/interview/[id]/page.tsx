@@ -3,7 +3,7 @@ import { getInterviewById } from "@/lib/actions/general.action";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import React from "react";
-import { getRandomInterviewCover } from "@/lib/utils";
+import { getInterviewCover, getRandomInterviewCover } from "@/lib/utils";
 import DisplayTechIcons from "@/components/DisplayTechIcons/DisplayTechIcons";
 import Agent from "@/components/Agent/Agent";
 
@@ -19,7 +19,7 @@ const page = async ({ params }: RouteParams) => {
         <div className="flex flex-row gap-4 items-center max-sm:flex-col ">
           <div className="flex flex-row gap-4 items-center">
             <Image
-              src={getRandomInterviewCover()}
+              src={getInterviewCover(interview.role)}
               alt="cover-image"
               height={70}
               width={70}
