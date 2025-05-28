@@ -115,13 +115,13 @@ const page = async ({ params }: RouteParams) => {
 
           <div className="flex flex-col md:flex-row gap-4 pt-6">
             <Link href="/" className="w-full">
-              <Button className="w-full bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold rounded-lg py-3">
+              <Button className="w-full text-lg bg-gray-700 hover:bg-gray-600 text-gray-200 font-semibold rounded-lg py-3">
                 Back to Dashboard
               </Button>
             </Link>
 
             <Link href={`/interview/${id}`} className="w-full">
-              <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-semibold rounded-lg py-3">
+              <Button className="w-full text-lg bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-700 hover:to-pink-600 text-white font-semibold rounded-lg py-3">
                 Retake Interview
               </Button>
             </Link>

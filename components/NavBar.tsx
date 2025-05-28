@@ -31,11 +31,11 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="flex flex-wrap items-center justify-between px-4 py-3 md:px-[5%] ">
+    <nav className="flex flex-wrap items-center justify-between px-4 mt-2 py-3 md:px-[5%] ">
       <Link className="flex items-center gap-2" href="/">
         <Image src="/chat-logo.svg" alt="logo" height={40} width={40} />
-        <h2 className="font-semibold text-2xl sm:text-3xl tracking-wide text-[var(--col4)]">
-          InterviewAssist
+        <h2 className=" font-semibold text-2xl sm:text-3xl tracking-[2px] justify-center">
+          <span className="text-pink-400">Hire</span>lyft
         </h2>
       </Link>
 

@@ -9,8 +9,8 @@ const monaSans = Mona_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Interview Assist",
-  description: "Pepare for ur Interviews00 using AI powered platform",
+  title: "Hirelyft",
+  description: "Pepare for your Interviews using AI powered platform.",
 };
 
 export default function RootLayout({

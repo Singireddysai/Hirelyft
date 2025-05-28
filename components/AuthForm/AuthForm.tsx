@@ -107,7 +107,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
     <div className="flex justify-center items-center h-screen w-screen">
       <div className="auth-card">
         <div className="AuthForm md:min-w-[400px]">
-          <div className="card px-10 py-5 text-4xl font-[600] tracking-[1px] text-[var(--col2)]">
+          <div className="card px-10 py-5 text-4xl font-[600] tracking-[2px]">
             <Image
               className="mr-2"
               src="/chat-logo.svg"
@@ -115,7 +115,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
               height={36}
               width={36}
             />
-            InterviewAssist
+            <span className="text-pink-400">Hire</span>lyft
           </div>
           <div className="card text-lg -mt-3 font-[400] tracking-[1px]">
             Practice Interviews with AI
@@ -147,7 +147,10 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 placeholder="Enter your password"
               />
 
-              <Button className="text-black text-lg btn mt-4" type="submit">
+              <Button
+                className="text-black text-xl btn bg-purple-500 mt-4"
+                type="submit"
+              >
                 {isSignIn ? "Sign-in" : "Create an account"}
               </Button>
               <p className="card">
@@ -155,7 +158,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                   ? "Don't have an account?"
                   : "Already have an account?"}
                 <Link
-                  className="font-bold text-lg text-[var(--col2)] ml-[4px]"
+                  className="font-bold text-lg text-purple-400 ml-[4px]"
                   href={isSignIn ? "/sign-up" : "/sign-in"}
                 >
                   {isSignIn ? "Register" : "Sign-in"}
