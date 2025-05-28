@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mona-sans), sans-serif;
+}
+
 :root {
   --col1: #7f55b1;
   --col2: #9b7ebd;
