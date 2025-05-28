@@ -15,7 +15,7 @@ const page = async ({ params }: RouteParams) => {
   if (!interview) redirect("/");
   return (
     <>
-      <div className="flex flex-row gap-4 justify-between items-center px-[21%]">
+      <div className="flex flex-row gap-4 justify-between items-center px-[10%] md:px-[21%]">
         <div className="flex flex-row gap-4 items-center max-sm:flex-col ">
           <div className="flex flex-row gap-4 items-center">
             <Image
@@ -25,15 +25,18 @@ const page = async ({ params }: RouteParams) => {
               width={70}
               className="rounded-full object-cover size-[70px]"
             />
-            <h3 className="capitlaize text-3xl font-700">
-              {interview.role} Interview
+            <h3 className="capitalize text-xl md:text-3xl  font-bold">
+              <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+                {interview.role}
+              </span>{" "}
+              Interview
             </h3>
+            <p className="bg-neutral-800 px-4 py-2 rounded-lg h-fit font-bold capitalize">
+              {interview.type}
+            </p>
           </div>
           <DisplayTechIcons techStack={interview.techstack} />
         </div>
-        <p className="bg-dark-200 px-4 py-2 rounded-lg h-fit capitalize">
-          {interview.type}
-        </p>
       </div>
       <Agent
         userName={user?.name || ""}

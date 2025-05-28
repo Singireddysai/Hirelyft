@@ -39,7 +39,7 @@ const page = async () => {
                 asChild
                 className="max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8655c3]  hover:text-white"
               >
-                <Link className="text-[var(--col2)]" href="/interview">
+                <Link className="text-[var(--col2)]" href="/latest-interviews">
                   View Interviews
                 </Link>
               </Button>

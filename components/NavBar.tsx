@@ -31,15 +31,15 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="flex flex-wrap items-center justify-between px-4 mt-2 py-3 md:px-[5%] ">
-      <Link className="flex items-center gap-2" href="/">
+    <nav className="flex items-center gap-14 md:justify-between px-4 mt-2 py-3 md:px-[5%] ">
+      <Link className="flex items-center gap-1" href="/">
         <Image src="/chat-logo.svg" alt="logo" height={40} width={40} />
-        <h2 className=" font-semibold text-2xl sm:text-3xl tracking-[2px] justify-center">
-          <span className="text-pink-400">Hire</span>lyft
+        <h2 className=" font-bold text-3xl md:text-4xl justify-center">
+          <span className="text-pink-500">Hire</span>lyft
         </h2>
       </Link>
 
-      <div className="w-full mt-4 md:mt-0 md:w-auto flex flex-wrap justify-center md:justify-end gap-6">
+      <div className="w-full mt-4 md:mt-0 md:w-auto flex flex-wrap justify-center md:justify-end gap-2">
         {[
           { href: "/", icon: "/home.svg", label: "Home" },
           { href: "/features", icon: "/features.svg", label: "Features" },
@@ -64,7 +64,7 @@ export default function NavBar() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="transition-transform duration-300 hover:-translate-y-1 cursor-pointer">
+          <div className="transition-transform -mt-1 duration-300 hover:-translate-y-1 cursor-pointer">
             <Image
               src="/profile-check.svg"
               alt="profile"

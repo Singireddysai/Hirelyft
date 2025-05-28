@@ -74,7 +74,7 @@ const FeaturesPage = () => {
 
       {/* Footer Note */}
       <p className="mt-16 text-center text-sm text-gray-500">
-        More updates coming soon.{" "}
+        More updates coming soon (jus kiddin' 😝).{" "}
         <Link href="/" className="underline hover:text-pink-400">
           View Dashboard
         </Link>

@@ -31,9 +31,13 @@
 }
 
 .call {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   font-weight: bold;
-  padding: 4px 44px 4px 44px;
+  height: 2.5rem;
+  width: 8rem;
   background-color: lime;
   border-radius: 20px;
   color: white;
@@ -41,8 +45,12 @@
 }
 
 .end {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
-  padding: 4px 44px 4px 44px;
+  height: 2.5rem;
+  width: 8rem;
   border-radius: 20px;
   background-color: red;
   color: rgb(255, 255, 255);
@@ -50,7 +58,7 @@
 }
 
 .call:hover {
-  background-color: rgb(49, 181, 49);
+  background-color: rgb(35, 216, 35);
   color: white;
 }
 .end:hover {
@@ -110,7 +118,7 @@
 
 @keyframes ripple {
   0% {
-    transform: scale(1);
+    transform: scale(1.2);
     opacity: 1;
   }
   100% {

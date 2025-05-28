@@ -27,8 +27,8 @@ const InterviewCard = async ({
     <div className="p-0.5 rounded-[20px] bg-gradient-to-b from-[#444242] to-[#1b1a1a]">
       <div className=" rounded-[20px] bg-gradient-to-b from-[#1b1a1a] to-black w-[320px] h-[340px] max-sm:w-full">
         <div className="relative p-3 flex flex-col gap-2">
-          <div className="absolute top-1 right-1 px-3 py-1.5 bg-gray-900 rounded-full text-purple-400 font-medium">
-            <p className="font-bold">{normalizedType}</p>
+          <div className="absolute top-1 right-1 px-3 py-1.5 bg-neutral-800 rounded-full text-purple-400 font-medium">
+            <p className="font-bold capitalize">{normalizedType}</p>
           </div>
           <Image
             className="rounded-full"
@@ -37,7 +37,9 @@ const InterviewCard = async ({
             width={80}
             height={80}
           />
-          <h3 className="text-xl font-bold mt-6">{role} Interview</h3>
+          <h3 className="text-xl font-bold mt-6 capitalize">
+            {role} Interview
+          </h3>
           <div className="flex gap-1 text-white">
             <Image
               src={"/calendar.svg"}

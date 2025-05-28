@@ -44,7 +44,8 @@ const SupportPage = () => {
           Support & Contact
         </h1>
         <p className="text-center text-lg text-gray-300 font-light mb-6">
-          Need help? Fill out this form and we’ll respond as soon as possible.
+          Need help? Fill out this form and we&apos;ll respond as soon as
+          possible.
         </p>
 
         {submitted ? (
@@ -54,7 +55,7 @@ const SupportPage = () => {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="bg-[#1f1f1f] p-8 rounded-2xl shadow-xl space-y-6"
+            className="bg-[#141414] border-2 border-neutral-800 p-8 rounded-2xl shadow-xl space-y-6"
           >
             <div>
               <label

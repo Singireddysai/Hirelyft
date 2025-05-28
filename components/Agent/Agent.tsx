@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import "./Agent.css";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { vapi } from "@/lib/vapi.sdk";
@@ -139,7 +140,7 @@ const Agent = ({
     callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
   return (
     <>
-      <div className="interview-pane justify-center items-center pt-18 flex gap-6">
+      <div className="interview-pane justify-center items-center pt-3 flex gap-6">
         <div className="bg-card !p-[0px]">
           <div className="ai interview-card border-3 border-solid border-slate-500">
             <div className="wave-container">
@@ -155,7 +156,7 @@ const Agent = ({
               </div>
             </div>
 
-            <p className="text-3xl mt-2 font-600 tracking-[1px]">
+            <p className="text-3xl mt-2 font-[600] tracking-[1px]">
               AI Interviewer
             </p>
           </div>
@@ -164,12 +165,12 @@ const Agent = ({
           <div className="user interview-card">
             <Image
               className="rounded-full"
-              src={"/user-avatar.png"}
+              src={"/you.png"}
               alt="user"
               height={90}
               width={90}
             />
-            <p className="text-3xl mt-2 font-600">{userName}</p>
+            <p className="text-3xl mt-2 font-[600] capitalize">{userName}</p>
           </div>
         </div>
       </div>
@@ -192,9 +193,9 @@ const Agent = ({
         </div>
       )}
 
-      <div className="w-full mt-[4rem] flex justify-center">
+      <div className="w-full mt-[2rem] flex flex-col gap-4  items-center justify-center">
         {callStatus !== "ACTIVE" ? (
-          <button className="call" onClick={handleCall}>
+          <button className="call group" onClick={handleCall}>
             <span
               className={cn(
                 "absolute animate-ping rounded-full opacity-75",
@@ -204,31 +205,39 @@ const Agent = ({
             <span>
               {isCallInactiveOrFinished ? (
                 <Image
+                  className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
                   src={"/call.svg"}
-                  alt="end call"
-                  height={32}
-                  width={32}
+                  alt="call"
+                  height={28}
+                  width={28}
                 />
               ) : (
                 <Lottie
+                  height={30}
+                  width={30}
                   autoplay
                   loop
                   animationData={animationData}
-                  style={{ height: "34px", width: "64px" }}
                 />
               )}
             </span>
           </button>
         ) : (
-          <button className="end" onClick={handleDisconnet}>
+          <button className="end group" onClick={handleDisconnet}>
             <Image
+              className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
               src={"/end-call.svg"}
-              alt="end call"
+              alt="end"
               height={32}
               width={32}
             />
           </button>
         )}
+        <Button className="px-4 py-2 border-2 rounded-[20px] h-[2.5rem] w-[8rem] border-pink-600 hover:bg-pink-600">
+          <Link className="font-[600] text-xl" href={"/"}>
+            Back
+          </Link>
+        </Button>
       </div>
     </>
   );
