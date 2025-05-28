@@ -110,3 +110,23 @@ export async function isAuthenticated() {
   return !!user;
 }
 
+export async function signOut() {
+  const cookieStore = await cookies();
+  cookieStore.set("session", "", {
+    maxAge: 0,
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    sameSite: "lax",
+  });
+
+  return {
+    success: true,
+    message: "Signed out successfully.",
+  };
+}
+
+
+export async function serverSignOut() {
+  await signOut(); 
+}

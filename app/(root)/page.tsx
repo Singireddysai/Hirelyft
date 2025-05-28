@@ -37,25 +37,28 @@ const page = async () => {
             <div className="flex gap-4 flex-col mt-8 md:flex-row md:gap-8">
               <Button
                 asChild
-                className="max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#6d4b98]  hover:text-white"
+                className="max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8655c3]  hover:text-white"
               >
                 <Link className="text-[var(--col2)]" href="/interview">
-                  Start interview{" "}
-                  <Image
-                    src={"/arrow.svg"}
-                    alt="arrow"
-                    height={32}
-                    width={32}
-                    className="relative right-[8px] top-[2px]"
-                  />
+                  View Interviews
                 </Link>
               </Button>
               <Button
                 asChild
-                className="max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full border-2 border-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-purple-600  hover:text-white"
+                className="group max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full border-2 border-pink-500 mt-4 transition duration-200 ease-in-out hover:bg-pink-500 hover:text-white"
               >
-                <Link className="text-white" href="/interview">
-                  View interviews
+                <Link
+                  href="/interview"
+                  className="flex items-center justify-center gap-2  text-white"
+                >
+                  Start Interview
+                  <Image
+                    src="/arrow.svg"
+                    alt="arrow"
+                    height={32}
+                    width={32}
+                    className="transition-transform duration-300 -ml-3 ease-in-out group-hover:translate-x-1 relative top-[2px]"
+                  />
                 </Link>
               </Button>
             </div>
@@ -63,7 +66,7 @@ const page = async () => {
         </div>
       </section>
       <section className="flex flex-col gap-6 mt-8 px-[4rem] pt-[6rem]">
-        <h2 className="text-2xl font-bold">Your interviews</h2>
+        <h2 className="text-2xl font-bold">Your Interviews</h2>
         <div className="flex flex-wrap gap-8">
           {hasPastInterviews ? (
             userInterviews?.map((interview) => (
@@ -75,7 +78,7 @@ const page = async () => {
         </div>
       </section>
       <section className="flex flex-col gap-6 mt-8 mb-8 px-[4rem] pt-[6rem]">
-        <h2 className="text-2xl font-bold">Take an interview</h2>
+        <h2 className="text-2xl font-bold">Take An Interview</h2>
         <div className="flex flex-wrap gap-8">
           {hasUpcomingInterviews ? (
             latestInterviews?.map((interview) => (

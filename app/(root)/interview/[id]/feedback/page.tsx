@@ -22,7 +22,7 @@ const page = async ({ params }: RouteParams) => {
     userId: user?.id!,
   });
   return (
-    <section className="px-[20%] md:px-[20%] py-10  text-gray-200 min-h-screen">
+    <section className="px-[5%] md:px-[20%] py-10  text-gray-200 min-h-screen">
       <div className="text-center mb-10">
         <h1 className="text-3xl md:text-4xl font-extrabold">
           <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">

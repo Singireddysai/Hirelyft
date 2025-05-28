@@ -106,8 +106,8 @@ const AuthForm = ({ type }: { type: FormType }) => {
   return (
     <div className="flex justify-center items-center h-screen w-screen">
       <div className="auth-card">
-        <div className="AuthForm lg:min-w-[433px]">
-          <div className="card px-10 py-5 text-2xl font-[600] tracking-[1px] text-[var(--col2)]">
+        <div className="AuthForm md:min-w-[400px]">
+          <div className="card px-10 py-5 text-4xl font-[600] tracking-[1px] text-[var(--col2)]">
             <Image
               className="mr-2"
               src="/chat-logo.svg"
@@ -147,7 +147,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                 placeholder="Enter your password"
               />
 
-              <Button className="text-black btn mt-4" type="submit">
+              <Button className="text-black text-lg btn mt-4" type="submit">
                 {isSignIn ? "Sign-in" : "Create an account"}
               </Button>
               <p className="card">
@@ -155,7 +155,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
                   ? "Don't have an account?"
                   : "Already have an account?"}
                 <Link
-                  className="font-bold text-[var(--col2)] ml-[4px]"
+                  className="font-bold text-lg text-[var(--col2)] ml-[4px]"
                   href={isSignIn ? "/sign-up" : "/sign-in"}
                 >
                   {isSignIn ? "Register" : "Sign-in"}
