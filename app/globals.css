@@ -36,13 +36,6 @@ body {
   align-items: center;
 }
 
-/* .card-cta {
-  border: solid 2px #141414;
-  border-radius: 40px;
-  padding: 2rem 1rem 0rem 3rem;
-  background: linear-gradient(to bottom, #13092e, #00000000);
-} */
-
 .auth-card {
   padding: 2px;
   border-radius: 20px;

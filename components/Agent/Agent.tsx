@@ -12,6 +12,7 @@ import { interviewer } from "@/constants";
 import Lottie from "lottie-react";
 import animationData from "../../public/connecting-animation.json";
 import { createFeedback } from "@/lib/actions/general.action";
+import FadeInAnimation from "../animations/FadeIn";
 
 enum CallStatus {
   INACTIVE = "INACTIVE",
@@ -140,105 +141,115 @@ const Agent = ({
     callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED;
   return (
     <>
-      <div className="interview-pane justify-center items-center pt-3 flex gap-6">
-        <div className="bg-card !p-[0px]">
-          <div className="ai interview-card border-3 border-solid border-slate-500">
-            <div className="wave-container">
-              {isSpeaking && (
-                <>
-                  <div className="ripple"></div>
-                  <div className="ripple delay-1"></div>
-                  <div className="ripple delay-2"></div>
-                </>
-              )}
-              <div className="center-dot">
-                <Image src={"/chat-logo.svg"} alt="AI" height={90} width={90} />
-              </div>
-            </div>
-
-            <p className="text-3xl mt-2 font-[600] tracking-[1px]">
-              AI Interviewer
-            </p>
-          </div>
-        </div>
-        <div className="bg-card hidden md:block">
-          <div className="user interview-card">
-            <Image
-              className="rounded-full"
-              src={"/you.png"}
-              alt="user"
-              height={90}
-              width={90}
-            />
-            <p className="text-3xl mt-2 font-[600] capitalize">{userName}</p>
-          </div>
-        </div>
-      </div>
-
-      {messages.length > 0 && (
-        <div className="px-[10%] mt-[2rem] md:px-[21%]">
-          <div className="interview-txt-div">
-            <div className="interview-txt py-[8px] px-[16px] flex justify-center items-center text-lg font-semibold">
-              <p
-                key={latestMessage}
-                className={cn(
-                  "transition-opacity duration-500 opacity-0",
-                  "animate-fadeIn opacity-100"
+      <FadeInAnimation>
+        <div className="fade-appear opacity-0 interview-pane justify-center items-center pt-3 flex gap-6">
+          <div className="bg-card !p-[0px]">
+            <div className="ai interview-div border-3 border-solid border-slate-500">
+              <div className="wave-container">
+                {isSpeaking && (
+                  <>
+                    <div className="ripple"></div>
+                    <div className="ripple delay-1"></div>
+                    <div className="ripple delay-2"></div>
+                  </>
                 )}
-              >
-                {latestMessage}
+                <div className="center-dot">
+                  <Image
+                    src={"/chat-logo.svg"}
+                    alt="AI"
+                    height={90}
+                    width={90}
+                  />
+                </div>
+              </div>
+
+              <p className="text-3xl mt-2 font-[600] tracking-[1px]">
+                AI Interviewer
               </p>
             </div>
           </div>
+          <div className="bg-card hidden md:block">
+            <div className="user interview-div">
+              <Image
+                className="rounded-full"
+                src={"/you.png"}
+                alt="user"
+                height={90}
+                width={90}
+              />
+              <p className="text-3xl mt-2 font-[600] capitalize">{userName}</p>
+            </div>
+          </div>
         </div>
-      )}
 
-      <div className="w-full mt-[2rem] flex flex-col gap-4  items-center justify-center">
-        {callStatus !== "ACTIVE" ? (
-          <button className="call group" onClick={handleCall}>
-            <span
-              className={cn(
-                "absolute animate-ping rounded-full opacity-75",
-                callStatus !== "CONNECTING" && "hidden"
-              )}
-            />
-            <span>
-              {isCallInactiveOrFinished ? (
-                <Image
-                  className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
-                  src={"/call.svg"}
-                  alt="call"
-                  height={28}
-                  width={28}
-                />
-              ) : (
-                <Lottie
-                  height={30}
-                  width={30}
-                  autoplay
-                  loop
-                  animationData={animationData}
-                />
-              )}
-            </span>
-          </button>
-        ) : (
-          <button className="end group" onClick={handleDisconnet}>
-            <Image
-              className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
-              src={"/end-call.svg"}
-              alt="end"
-              height={32}
-              width={32}
-            />
-          </button>
+        {messages.length > 0 && (
+          <div className="px-[10%] mt-[2rem] md:px-[21%]">
+            <div className="interview-txt-div">
+              <div className="interview-txt py-[8px] px-[16px] flex justify-center items-center text-lg font-semibold">
+                <p
+                  key={latestMessage}
+                  className={cn(
+                    "transition-opacity duration-500 opacity-0",
+                    "animate-fadeIn opacity-100"
+                  )}
+                >
+                  {latestMessage}
+                </p>
+              </div>
+            </div>
+          </div>
         )}
-        <Button className="px-4 py-2 border-2 rounded-[20px] h-[2.5rem] w-[8rem] border-pink-600 hover:bg-pink-600">
-          <Link className="font-[600] text-xl" href={"/"}>
-            Back
-          </Link>
-        </Button>
-      </div>
+
+        <div className="w-full mt-[2rem] flex flex-col gap-4  items-center justify-center">
+          {callStatus !== "ACTIVE" ? (
+            <button className="call group" onClick={handleCall}>
+              <span
+                className={cn(
+                  "absolute animate-ping rounded-full opacity-75",
+                  callStatus !== "CONNECTING" && "hidden"
+                )}
+              />
+              <span>
+                {isCallInactiveOrFinished ? (
+                  <Image
+                    className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
+                    src={"/call.svg"}
+                    alt="call"
+                    height={28}
+                    width={28}
+                  />
+                ) : (
+                  <Lottie
+                    height={10}
+                    width={10}
+                    autoplay
+                    loop
+                    animationData={animationData}
+                  />
+                )}
+              </span>
+            </button>
+          ) : (
+            <button className="end group" onClick={handleDisconnet}>
+              <Image
+                className="transition-transform duration-300 ease-in-out group-hover:-rotate-8"
+                src={"/end-call.svg"}
+                alt="end"
+                height={32}
+                width={32}
+              />
+            </button>
+          )}
+          <Button
+            onClick={handleDisconnet}
+            className="h-32 w-108 flex justify-center align-center border-2 rounded-[20px] h-[2.5rem] w-[8rem] border-pink-600 hover:bg-pink-600"
+          >
+            <Link className="font-[600] text-xl" href={"/"}>
+              Back
+            </Link>
+          </Button>
+        </div>
+      </FadeInAnimation>
     </>
   );
 };

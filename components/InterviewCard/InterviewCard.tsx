@@ -24,7 +24,7 @@ const InterviewCard = async ({
   ).format("MMM D ,YYYY");
 
   return (
-    <div className="p-0.5 rounded-[20px] bg-gradient-to-b from-[#444242] to-[#1b1a1a]">
+    <div className="p-0.5 rounded-[20px] bg-gradient-to-b from-[#444242] to-[#1b1a1a] shadow-xl hover:shadow-[0_0_20px_#9b7ebd55] transition transform hover:scale-[1.02]">
       <div className=" rounded-[20px] bg-gradient-to-b from-[#1b1a1a] to-black w-[320px] h-[340px] max-sm:w-full">
         <div className="relative p-3 flex flex-col gap-2">
           <div className="absolute top-1 right-1 px-3 py-1.5 bg-neutral-800 rounded-full text-purple-400 font-medium">

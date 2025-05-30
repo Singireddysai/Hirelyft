@@ -1,4 +1,4 @@
-.interview-card {
+.interview-div {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -8,7 +8,7 @@
   width: 20rem;
 }
 @media (min-width: 640px) {
-  .interview-card {
+  .interview-div {
     height: 20rem;
     width: 30rem;
   }
