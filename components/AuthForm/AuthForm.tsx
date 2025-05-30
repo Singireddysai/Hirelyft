@@ -106,7 +106,7 @@ const AuthForm = ({ type }: { type: FormType }) => {
   return (
     <div className="flex justify-center items-center h-screen w-screen">
       <div className="auth-card">
-        <div className="AuthForm md:min-w-[400px]">
+        <div className="AuthForm min-w-[320px] sm:min-w-[400px] md:min-w-[400px]">
           <div className="card px-10 py-5 text-4xl font-[600] tracking-[2px]">
             <Image
               className="mr-2"
