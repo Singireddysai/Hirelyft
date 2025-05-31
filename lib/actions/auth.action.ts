@@ -26,9 +26,9 @@ export async function signUp(params: SignUpParams) {
     };
   } catch (e: any) {
     console.error(`error occurred:${e}`);
-    // toast.error("Error", {
-    //   description: e.message || "Something went wrong.",
-    // });
+    toast.error("Error", {
+      description: e.message || "Something went wrong.",
+    });
     if (e.code === "auth/email-already-exists") {
       return {
         success: false,

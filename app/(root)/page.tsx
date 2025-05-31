@@ -35,12 +35,12 @@ const page = async () => {
               </h3>
               <p className="hero-animation text-xl text-purple-300 mt-4 font-[600]">
                 Level up your interview game with smart AI practice sessions
-                tailored only for you and detailed feedback.
+                tailored only for you and get detailed feedback.
               </p>
               <div className="hero-animation flex gap-4 flex-col mt-8 md:flex-row md:gap-8">
                 <Button
                   asChild
-                  className="max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8655c3]  hover:text-white"
+                  className="max-sm:w-full w-[12em] font-[600] py-5 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8545d3]  hover:text-white"
                 >
                   <Link
                     className="text-[var(--col2)]"
@@ -51,7 +51,7 @@ const page = async () => {
                 </Button>
                 <Button
                   asChild
-                  className="group max-sm:w-full w-[12em] font-[600] py-4 text-2xl rounded-full border-2 border-pink-500 mt-4 transition duration-200 ease-in-out hover:bg-pink-500 hover:text-white"
+                  className="group max-sm:w-full w-[12em] font-[600] py-5 text-2xl rounded-full border-2 border-pink-500 mt-4 transition duration-200 ease-in-out hover:bg-pink-500 hover:text-white"
                 >
                   <Link
                     href="/interview"
@@ -68,6 +68,76 @@ const page = async () => {
                   </Link>
                 </Button>
               </div>
+            </div>
+            <div className="relative w-[300px] h-[350px] ml-30 hidden md:block group">
+              {/* Robot Image */}
+              <Image
+                src="/robot.png"
+                alt="robot"
+                height={350}
+                width={300}
+                className="z-10 relative"
+              />
+
+              {/* Left Side Icons */}
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+                alt="css"
+                width={50}
+                height={50}
+                className="absolute left-[-30px] top-[10%] transition-all rotate-12 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-2"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+                alt="vue"
+                width={50}
+                height={50}
+                className="absolute left-[-32px] top-[30%] transition-all rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-1"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+                alt="bootstrap"
+                width={50}
+                height={50}
+                className="absolute left-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:-translate-x-5"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                alt="angular"
+                width={50}
+                height={50}
+                className="absolute left-[-32px] top-[70%] transition-all -rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:translate-y-1"
+              />
+
+              {/* Right Side Icons */}
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                alt="react"
+                width={50}
+                height={50}
+                className="absolute right-[-30px] top-[10%] transition-all -rotate-12 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-2"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                alt="tailwind"
+                width={50}
+                height={50}
+                className="absolute right-[-32px] top-[30%] transition-all -rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-1"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+                alt="mongo-db"
+                width={60}
+                height={60}
+                className="absolute right-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:translate-x-5"
+              />
+              <Image
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+                alt="node"
+                width={60}
+                height={60}
+                className="absolute right-[-30px] top-[70%] transition-all rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:translate-y-2"
+              />
             </div>
           </div>
         </HeroFadeInAnimation>
