@@ -16,13 +16,35 @@ const normalizeTechName = (tech: string) => {
 const checkIconExists = async (url: string) => {
   try {
     const response = await fetch(url, { method: "HEAD" });
-    return response.ok; // Returns true if the icon exists
+    return response.ok;
   } catch {
     return false;
   }
 };
 
-export const getTechLogos = async (techArray: string[]) => {
+export const parseTechStack = (input: string | string[]): string[] => {
+  const raw = Array.isArray(input) ? input.join(",") : input;
+
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      return parsed.map((t) => t.toLowerCase().trim());
+    }
+  } catch {}
+
+  return raw
+    .toLowerCase()
+    .replace(/[^a-z0-9\s,.-]/gi, "")
+    .replace(/[\s.,-]*(and|&)[\s.,-]*/gi, ",")
+    .replace(/[\s.-]+/g, ",")
+    .split(",")
+    .map((tech) => tech.trim())
+    .filter((tech) => tech.length > 0);
+};
+
+export const getTechLogos = async (techInput: string[] | string) => {
+  const techArray = parseTechStack(techInput);
+
   const logoURLs = techArray.map((tech) => {
     const normalized = normalizeTechName(tech);
     return {
@@ -74,4 +96,3 @@ export const getInterviewCover = (interviewRole: string): string => {
 
   return `/interview-covers/${matchedCover}.jpg`;
 };
-

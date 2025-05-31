@@ -41,7 +41,7 @@ const page = async () => {
               <div className="hero-animation flex gap-4 flex-col mt-8 md:flex-row md:gap-8">
                 <Button
                   asChild
-                  className="max-sm:w-full w-[12em] font-[600] py-5 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8545d3]  hover:text-white"
+                  className="max-sm:w-full w-[13em] font-[600] py-5 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8545d3]  hover:text-white"
                 >
                   <Link
                     className="text-[var(--col2)]"
@@ -52,13 +52,13 @@ const page = async () => {
                 </Button>
                 <Button
                   asChild
-                  className="group max-sm:w-full w-[12em] font-[600] py-5 text-2xl rounded-full border-2 border-pink-500 mt-4 transition duration-200 ease-in-out hover:bg-pink-500 hover:text-white"
+                  className="group max-sm:w-full w-[13em] font-[600] py-5 text-2xl rounded-full border-2 border-pink-500 mt-4 transition duration-200 ease-in-out hover:bg-pink-500 hover:text-white"
                 >
                   <Link
                     href="/interview"
                     className="flex items-center justify-center gap-2  text-white"
                   >
-                    Start Interview
+                    Generate Interview
                     <Image
                       src="/arrow.svg"
                       alt="arrow"

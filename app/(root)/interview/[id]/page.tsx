@@ -15,7 +15,7 @@ const page = async ({ params }: RouteParams) => {
   if (!interview) redirect("/");
   return (
     <>
-      <div className="flex flex-row gap-4 justify-between items-center px-[10%] md:px-[21%]">
+      <div className="flex flex-row mt-16 gap-4 justify-between items-center px-[10%] md:px-[21%]">
         <div className="flex flex-row gap-4 items-center max-sm:flex-col ">
           <div className="flex flex-row gap-4 items-center">
             <Image

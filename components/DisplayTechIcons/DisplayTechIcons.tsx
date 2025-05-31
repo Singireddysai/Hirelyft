@@ -1,9 +1,10 @@
-import { getTechLogos } from "@/lib/utils";
+import { getTechLogos, parseTechStack } from "@/lib/utils";
 import React from "react";
 import Image from "next/image";
 
 const DisplayTechIcons = async ({ techStack }: TechIconProps) => {
-  const techIcons = await getTechLogos(techStack);
+  const parsedStack = parseTechStack(techStack);
+  const techIcons = await getTechLogos(parsedStack);
   return (
     <div className="flex gap-2 p-2">
       {techIcons.slice(0, 3).map(({ tech, url }, index) => (
