@@ -9,6 +9,7 @@ import {
   getLatestInterviews,
 } from "@/lib/actions/general.action";
 import InterviewCardAnimation from "@/components/animations/InterviewCardAnimation";
+import FadeInAnimation from "@/components/animations/FadeIn";
 
 import { getCurrentUser } from "@/lib/actions/auth.action";
 const page = async () => {
@@ -69,76 +70,78 @@ const page = async () => {
                 </Button>
               </div>
             </div>
-            <div className="relative w-[300px] h-[350px] ml-30 hidden md:block group">
-              {/* Robot Image */}
-              <Image
-                src="/robot.png"
-                alt="robot"
-                height={350}
-                width={300}
-                className="z-10 relative"
-              />
+            <FadeInAnimation>
+              <div className="fade-appear opacity-0 relative w-[300px] h-[350px] ml-30 hidden md:block group">
+                {/* Robot Image */}
+                <Image
+                  src="/robot.png"
+                  alt="robot"
+                  height={350}
+                  width={300}
+                  className="z-10 relative"
+                />
 
-              {/* Left Side Icons */}
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
-                alt="css"
-                width={50}
-                height={50}
-                className="absolute left-[-30px] top-[10%] transition-all rotate-12 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-2"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
-                alt="vue"
-                width={50}
-                height={50}
-                className="absolute left-[-32px] top-[30%] transition-all rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-1"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
-                alt="bootstrap"
-                width={50}
-                height={50}
-                className="absolute left-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:-translate-x-5"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
-                alt="angular"
-                width={50}
-                height={50}
-                className="absolute left-[-32px] top-[70%] transition-all -rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:translate-y-1"
-              />
+                {/* Left Side Icons */}
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg"
+                  alt="css"
+                  width={50}
+                  height={50}
+                  className="absolute left-[-30px] top-[10%] transition-all rotate-12 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-2"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg"
+                  alt="vue"
+                  width={50}
+                  height={50}
+                  className="absolute left-[-32px] top-[30%] transition-all rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:-translate-y-1"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"
+                  alt="bootstrap"
+                  width={50}
+                  height={50}
+                  className="absolute left-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:-translate-x-5"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angularjs/angularjs-original.svg"
+                  alt="angular"
+                  width={50}
+                  height={50}
+                  className="absolute left-[-32px] top-[70%] transition-all -rotate-3 duration-500 ease-out group-hover:-translate-x-5 group-hover:translate-y-1"
+                />
 
-              {/* Right Side Icons */}
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
-                alt="react"
-                width={50}
-                height={50}
-                className="absolute right-[-30px] top-[10%] transition-all -rotate-12 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-2"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-                alt="tailwind"
-                width={50}
-                height={50}
-                className="absolute right-[-32px] top-[30%] transition-all -rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-1"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
-                alt="mongo-db"
-                width={60}
-                height={60}
-                className="absolute right-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:translate-x-5"
-              />
-              <Image
-                src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
-                alt="node"
-                width={60}
-                height={60}
-                className="absolute right-[-30px] top-[70%] transition-all rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:translate-y-2"
-              />
-            </div>
+                {/* Right Side Icons */}
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+                  alt="react"
+                  width={50}
+                  height={50}
+                  className="absolute right-[-30px] top-[10%] transition-all -rotate-12 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-2"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+                  alt="tailwind"
+                  width={50}
+                  height={50}
+                  className="absolute right-[-32px] top-[30%] transition-all -rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:-translate-y-1"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg"
+                  alt="mongo-db"
+                  width={60}
+                  height={60}
+                  className="absolute right-[-34px] top-[50%] transition-all duration-500 ease-out group-hover:translate-x-5"
+                />
+                <Image
+                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+                  alt="node"
+                  width={60}
+                  height={60}
+                  className="absolute right-[-30px] top-[70%] transition-all rotate-3 duration-500 ease-out group-hover:translate-x-5 group-hover:translate-y-2"
+                />
+              </div>
+            </FadeInAnimation>
           </div>
         </HeroFadeInAnimation>
       </section>
