@@ -37,7 +37,6 @@ export async function POST(request: Request) {
     const args = extractArguments(body);
     const { role, type, level, amount, techstack, userid } = args;
 
-    // Rest of your code...
     const amountNumber = parseInt(amount, 10);
     if (isNaN(amountNumber)) {
       throw new Error("Invalid amount: Must be a number");

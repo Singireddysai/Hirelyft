@@ -4,18 +4,45 @@ import { db } from "@/firebase/admin";
 import { google } from "@ai-sdk/google";
 import { generateObject } from "ai";
 
-export async function getInterviewByUserId(
-  userId: string
-): Promise<Interview[] | null> {
-  const interviews = await db
+export async function getInterviewByUserId(userId: string): Promise<Interview[] | null> {
+  const createdInterviewsSnap = await db
     .collection("interviews")
     .where("userId", "==", userId)
     .orderBy("createdAt", "desc")
     .get();
-  return interviews.docs.map((doc) => ({
+
+  const createdInterviews = createdInterviewsSnap.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   })) as Interview[];
+
+  const feedbackSnap = await db
+    .collection("feedback")
+    .where("userId", "==", userId)
+    .get();
+
+  const feedbackInterviewIds = feedbackSnap.docs
+    .map((doc) => doc.data().interviewId)
+    .filter((id: string | undefined): id is string => !!id);
+
+  const feedbackInterviews: Interview[] = [];
+
+  for (const interviewId of feedbackInterviewIds) {
+    const interviewDoc = await db.collection("interviews").doc(interviewId).get();
+    if (interviewDoc.exists) {
+      feedbackInterviews.push({
+        id: interviewDoc.id,
+        ...interviewDoc.data(),
+      } as Interview);
+    }
+  }
+
+  const allInterviewsMap = new Map<string, Interview>();
+  [...createdInterviews, ...feedbackInterviews].forEach((interview) =>
+    allInterviewsMap.set(interview.id, interview)
+  );
+
+  return Array.from(allInterviewsMap.values());
 }
 
 export async function getLatestInterviews(
@@ -51,13 +78,23 @@ export async function createFeedback(params: CreateFeedbackParams) {
           `-${sentence.role}:${sentence.content}\n`
       )
       .join("");
-    const { object:{totalScore,categoryScores,strengths,areasForImprovement,finalAssessment} } = await generateObject({
+
+    const {
+      object: {
+        totalScore,
+        categoryScores,
+        strengths,
+        areasForImprovement,
+        finalAssessment,
+      },
+    } = await generateObject({
       model: google("gemini-2.0-flash-001", {
         structuredOutputs: false,
       }),
       schema: feedbackSchema,
       prompt: `
         You are an AI interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories. Be thorough and detailed in your analysis. Don't be lenient with the candidate. If there are mistakes or areas for improvement, point them out.
+
         Transcript:
         ${formattedTranscript}
 
@@ -67,12 +104,19 @@ export async function createFeedback(params: CreateFeedbackParams) {
         - **Problem-Solving**: Ability to analyze problems and propose solutions.
         - **Cultural & Role Fit**: Alignment with company values and job role.
         - **Confidence & Clarity**: Confidence in responses, engagement, and clarity.
-        `,
+      `,
       system:
         "You are a professional interviewer analyzing a mock interview. Your task is to evaluate the candidate based on structured categories",
     });
 
-    const feedback=await db.collection('feedback').add({
+    const existingFeedbackSnap = await db
+      .collection("feedback")
+      .where("interviewId", "==", interviewId)
+      .where("userId", "==", userId)
+      .limit(1)
+      .get();
+
+    const feedbackData = {
       interviewId,
       userId,
       totalScore,
@@ -80,17 +124,33 @@ export async function createFeedback(params: CreateFeedbackParams) {
       strengths,
       areasForImprovement,
       finalAssessment,
-      createdAt:new Date().toISOString()
-    })
-    return {
-      success:true,
-      feedbackId:feedback.id
+      createdAt: new Date().toISOString(),
+    };
+
+    if (!existingFeedbackSnap.empty) {
+      const feedbackDoc = existingFeedbackSnap.docs[0];
+      await db.collection("feedback").doc(feedbackDoc.id).update(feedbackData);
+
+      return {
+        success: true,
+        feedbackId: feedbackDoc.id,
+        updated: true,
+      };
+    } else {
+      const feedbackDocRef = await db.collection("feedback").add(feedbackData);
+
+      return {
+        success: true,
+        feedbackId: feedbackDocRef.id,
+        updated: false,
+      };
     }
   } catch (error) {
-    console.log("Error saving feedback", error);
-    return {success:false}
+    console.error("Error saving feedback", error);
+    return { success: false };
   }
 }
+
 
 export async function getFeedbackById(
   params: GetFeedbackByInterviewIdParams
@@ -104,7 +164,7 @@ export async function getFeedbackById(
     .orderBy("createdAt", "desc")
     .limit(1)
     .get();
-  if(feedback.empty){ return null}
+  if(feedback.empty){     return null}
   const feedbackDoc=feedback.docs[0]
   return{
     id:feedbackDoc.id,...feedbackDoc.data()

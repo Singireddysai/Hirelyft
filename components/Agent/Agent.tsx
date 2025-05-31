@@ -92,7 +92,7 @@ const Agent = ({
     if (callStatus === CallStatus.FINISHED) {
       if (type === "generate") {
         router.push("/");
-      } else {
+      } else if (messages.length > 0) {
         handleGenerateFeedback(messages);
       }
     }
