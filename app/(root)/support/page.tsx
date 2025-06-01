@@ -42,10 +42,10 @@ const SupportPage = () => {
     <FadeInAnimation>
       <div className="min-h-screen  px-6 py-4 md:px-[10%] text-white">
         <div className="max-w-3xl mx-auto">
-          <h1 className="fade-in text-4xl md:text-5xl font-extrabold text-center mb-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+          <h1 className="fade-in opacity-0 text-4xl md:text-5xl font-extrabold text-center mb-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
             Support & Contact
           </h1>
-          <p className="fade-in-delay1 text-center text-lg text-gray-300 font-light mb-6">
+          <p className="fade-in-delay1 opacty-0 text-center text-lg text-gray-300 font-light mb-6">
             Need help? Fill out this form and we&apos;ll respond as soon as
             possible.
           </p>

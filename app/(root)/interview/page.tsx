@@ -11,7 +11,7 @@ const page = async () => {
     <>
       <FadeInAnimation>
         <div className="px-[5%] md:px-[22%] mt-16 flex justify-between items-center">
-          <h3 className=" font-[600] tracking-[1px] text-4xl  flex items-center py-[1rem]  group">
+          <h3 className="opacity-0 font-[600] tracking-[1px] text-4xl  flex items-center py-[1rem]  group">
             <span className="font-bold bg-gradient-to-r mr-1 from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
               Generate
             </span>{" "}

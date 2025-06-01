@@ -38,7 +38,7 @@ const FeaturesPage = () => {
     <FadeInAnimation>
       <div className="min-h-screen px-6 py-12 md:px-[10%] text-white">
         {/* Page Title */}
-        <h1 className="fade-in text-4xl md:text-5xl font-extrabold text-center mb-12 ">
+        <h1 className="fade-in opacity-0 text-4xl md:text-5xl font-extrabold text-center mb-12 ">
           <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
             Features
           </span>{" "}

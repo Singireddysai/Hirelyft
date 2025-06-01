@@ -27,14 +27,14 @@ const page = async () => {
         <HeroFadeInAnimation>
           <div className="card-cta !border-none flex flex-col lg:flex-row items-center">
             <div className="flex flex-col gap-3 max-w-4xl">
-              <h3 className="hero-animation text-5xl md:text-6xl font-[700]">
+              <h3 className="opacity-0 hero-animation text-5xl md:text-6xl font-[700]">
                 Prepare for your interviews & get feedback, with{" "}
                 <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
                   AI-Powered
                 </span>{" "}
                 Assistant
               </h3>
-              <p className="hero-animation text-xl text-purple-300 mt-4 font-[600]">
+              <p className="hero-animation opacity-0 text-xl text-purple-300 mt-4 font-[600]">
                 Level up your interview game with smart AI practice sessions
                 tailored only for you and get detailed feedback.
               </p>
