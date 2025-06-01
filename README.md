@@ -1,8 +1,10 @@
 # ✨ Hirelyft — Your AI Interview Companion
 
-![Hero Banner](public/banner.png) <!-- Optional: Add a custom banner -->
+![Hero Banner](public/banner.png) 
 
 Hirelyft is an AI-powered **mock interview platform** that allows users to generate, take, and review interviews with detailed feedback across technical and soft skills — all in one seamless and beautiful experience.
+
+## [Try Hirelyft now](https://hirelyft.vercel.app/)
 
 ---
 
