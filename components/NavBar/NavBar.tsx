@@ -33,12 +33,17 @@ export default function NavBar() {
 
   return (
     <NavFadeInAnimation>
-      <nav className="flex items-center gap-14 md:justify-between px-4 mt-2 py-3 md:px-[5%] ">
+      <nav className="flex items-center gap-12 md:justify-between px-4 mt-2 py-3 md:px-[5%] ">
         <Link className="flex items-center gap-1 nav" href="/">
           <Image src="/chat-logo.svg" alt="logo" height={40} width={40} />
-          <h2 className=" font-bold text-3xl md:text-4xl justify-center">
-            <span className="text-pink-500">Hire</span>lyft
-          </h2>
+          <div className="w-40 flex items-center justify-center">
+            <Image
+              src={"/hirelyft2.png"}
+              alt="hirelyft"
+              height={80}
+              width={120}
+            />
+          </div>
         </Link>
 
         <div className="w-full mt-4 md:mt-0 md:w-auto flex flex-wrap justify-center md:justify-end gap-2">
