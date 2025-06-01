@@ -46,7 +46,7 @@ export const getTechLogos = async (techInput: string[] | string) => {
   const techArray = parseTechStack(techInput);
 
   const logoURLs = techArray.map((tech) => {
-    const normalized = normalizeTechName(tech);
+    const normalized = tech
     return {
       tech,
       url: `${techIconBaseURL}/${normalized}/${normalized}-original.svg`,
