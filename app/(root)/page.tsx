@@ -151,7 +151,7 @@ const page = async () => {
           <div className=" interview-container flex flex-wrap gap-8">
             {hasPastInterviews ? (
               userInterviews?.map((interview) => (
-                <div className="interview-card" key={interview.id}>
+                <div className="opacity-0 interview-card" key={interview.id}>
                   <InterviewCard {...interview} key={interview.id} />
                 </div>
               ))

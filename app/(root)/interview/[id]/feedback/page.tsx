@@ -27,7 +27,7 @@ const page = async ({ params }: RouteParams) => {
       <FadeInAnimation>
         <section className="px-[5%] md:px-[20%] py-10  text-gray-200 min-h-screen">
           <div className="text-center mb-10">
-            <h1 className="fade-in-delay1 text-3xl md:text-4xl font-extrabold capitalize">
+            <h1 className="fade-in-delay1 opacity-0 text-3xl md:text-4xl font-extrabold capitalize">
               <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent ">
                 Feedback Summary
               </span>{" "}
@@ -35,7 +35,7 @@ const page = async ({ params }: RouteParams) => {
             </h1>
           </div>
 
-          <div className="fade-in-delay1 flex flex-col md:flex-row justify-center items-center gap-6 mb-10 text-lg">
+          <div className="fade-in-delay1 opacity-0 flex flex-col md:flex-row justify-center items-center gap-6 mb-10 text-lg">
             <div className="flex items-center gap-2">
               <Image src="/star.png" width={22} height={22} alt="star" />
               <span className="font-medium">
@@ -60,7 +60,7 @@ const page = async ({ params }: RouteParams) => {
               </span>
             </div>
           </div>
-          <div className="fade-appear bg-gradient-to-b from-[#444242] to-[#1b1a1a] rounded-2xl p-[2px]">
+          <div className="fade-appear opacity-0 bg-gradient-to-b from-[#444242] to-[#1b1a1a] rounded-2xl p-[2px]">
             <div className="bg-gradient-to-b from-[#1b1a1a] to-black rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
               <div>
                 <p className="text-lg leading-relaxed">
