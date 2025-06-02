@@ -5,6 +5,7 @@
 Hirelyft is an AI-powered **mock interview platform** that allows users to generate, take, and review interviews with detailed feedback across technical and soft skills — all in one seamless and beautiful experience.
 
 ## [Try Hirelyft Now 💫](https://hirelyft.vercel.app/)
+## [Watch The Demo In Youtube](https://youtu.be/m5DlW_AryD4)
 
 ---
 
