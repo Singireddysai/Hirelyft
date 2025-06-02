@@ -38,7 +38,7 @@ const page = async () => {
                 Level up your interview game with smart AI practice sessions
                 tailored only for you and get detailed feedback.
               </p>
-              <div className="hero-animation flex gap-4 flex-col mt-8 md:flex-row md:gap-8">
+              <div className="hero-animation opacity-0 flex gap-4 flex-col mt-8 md:flex-row md:gap-8">
                 <Button
                   asChild
                   className="max-sm:w-full w-[13em] font-[600] py-5 text-2xl rounded-full text-white bg-purple-600 mt-4 transition duration-200 ease-in-out hover:bg-[#8545d3]  hover:text-white"

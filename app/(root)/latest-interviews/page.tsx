@@ -17,7 +17,7 @@ const page = async () => {
     <FadeInAnimation>
       <div>
         <section className="flex flex-col gap-6 mt-2 mb-8 px-[4rem] pt-[2rem]">
-          <h2 className="fade-in-delay1 text-3xl -ml-8 md:ml-2 font-bold">
+          <h2 className="fade-in-delay1 opacity-0 text-3xl -ml-8 md:ml-2 font-bold">
             Latest{" "}
             <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
               Interviews
